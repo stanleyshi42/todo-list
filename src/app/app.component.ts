@@ -44,4 +44,16 @@ export class AppComponent {
     localStorage.clear();
     this.getTasks();
   }
+
+  // Toggles strikethrough decorator for a task
+  toggleCompleted(index: number) {
+    const element = document.getElementById('task-' + index);
+    if (element != null) {
+      if (element.style.textDecoration == 'line-through')
+        element.style.textDecoration = '';
+      else {
+        element.style.textDecoration = 'line-through';
+      }
+    }
+  }
 }

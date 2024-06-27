@@ -15,7 +15,7 @@
       <input class="fs-2" style="width: 100%" [(ngModel)]="newTask" />
     </div>
     <div class="col-auto align-self-center">
-      <button (click)="saveTask()" class="btn btn-primary">Save Task</button>
+      <button (click)="saveTask()" class="btn btn-primary">📝</button>
     </div>
   </div>
 
@@ -24,11 +24,17 @@
     <div class="row m-2">
       <div class="col-auto g-2 m-0 align-self-center">
         <div class="form-check">
-          <input class="form-check-input border border-dark" type="checkbox" />
+          <input
+            class="form-check-input border border-dark"
+            type="checkbox"
+            (click)="toggleCompleted(i)"
+          />
         </div>
       </div>
       <div class="col g-2 m-0">
-        <div class="lead border border-dark rounded p-3 fs-2">{{ task }}</div>
+        <div id="task-{{ i }}" class="lead border border-dark rounded p-2 fs-2">
+          {{ task }}
+        </div>
       </div>
       <div class="col-auto g-2 m-0 align-self-center">
         <button (click)="removeTask(i)" class="btn btn-danger p-3">🗑️</button>
