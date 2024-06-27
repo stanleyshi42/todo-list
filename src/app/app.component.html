@@ -22,6 +22,11 @@
   <!-- Create an element for each task; attaches an index number for the removeTask() function -->
   <div *ngFor="let task of tasks; index as i">
     <div class="row m-2">
+      <div class="col-auto g-2 m-0 align-self-center">
+        <div class="form-check">
+          <input class="form-check-input border border-dark" type="checkbox" />
+        </div>
+      </div>
       <div class="col g-2 m-0">
         <div class="lead border border-dark rounded p-3 fs-2">{{ task }}</div>
       </div>
