@@ -36,9 +36,8 @@ export class AppComponent {
     this.getTasks();
     if (index > -1) {
       this.tasks.splice(index, 1);
+      localStorage.setItem('tasks', JSON.stringify(this.tasks));
     }
-
-    localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
 
   clearAllTasks() {
