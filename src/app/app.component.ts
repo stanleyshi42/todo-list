@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'todo-list';
-  tasks: string[] = [];
+  tasks: any[] = [];
   newTask: string = '';
 
   constructor() {
@@ -21,7 +21,9 @@ export class AppComponent {
 
     // Add new task to local storage
     this.getTasks();
-    this.tasks.push(this.newTask);
+    //this.tasks.push(this.newTask);
+
+    this.tasks.push([this.newTask, false]);
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
     this.newTask = '';
   }
@@ -41,12 +43,17 @@ export class AppComponent {
   }
 
   clearAllTasks() {
-    localStorage.clear();
+    localStorage.removeItem('tasks');
     this.getTasks();
   }
 
   // Toggles strikethrough decorator for a task
   toggleCompleted(index: number) {
+    // Toggle boolean and save in local storage
+    this.tasks[index][1] = !this.tasks[index][1];
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
+
+    // Modify DOM
     const element = document.getElementById('task-' + index);
     if (element != null) {
       if (element.style.textDecoration == 'line-through')
